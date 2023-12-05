@@ -10,7 +10,7 @@ end
 
 local line = string.rep('.', #map[#map])
 table.insert(map, {})
-line:gsub(".", function(c) table.insert(map[#map], c) end)
+_ = line:gsub(".", function(c) table.insert(map[#map], c) end)
 
 local function key(x)
     return tostring(x[1]) .. "," .. tostring(x[2])

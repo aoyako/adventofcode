@@ -11,7 +11,7 @@ end
 
 local line = string.rep('.', #map[#map])
 table.insert(map, {})
-line:gsub(".", function(c) table.insert(map[#map], c) end)
+_= line:gsub(".", function(c) table.insert(map[#map], c) end)
 
 local curr_num = 0
 local connected = false
