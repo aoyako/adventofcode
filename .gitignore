@@ -1,2 +1,4 @@
 *.go
 .vscode/
+*.out
+*.mod
