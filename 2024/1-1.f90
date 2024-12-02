@@ -1,5 +1,5 @@
 program one_one
-    use sort_module
+    use util
     implicit none
     integer, parameter :: max_size = 3000
     integer :: arr1(max_size), arr2(max_size)
