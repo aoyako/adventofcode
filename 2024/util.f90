@@ -63,4 +63,42 @@ contains
         read(input_line, *) read_int_list
 
     end function read_int_list
+
+    integer function count_substrings(line, needle)
+        character(len=*) :: line
+        character(len=*) :: needle
+        integer :: i
+        integer :: count
+
+        count = 0
+        do i = 1, len(trim(adjustl(line))) - len(trim(adjustl(needle)))
+            if (line(i:i+len(needle)-1) == needle) then
+                count = count + 1
+            end if
+        end do
+
+        count_substrings = count
+    end function count_substrings
+
+    function read_int_list_sep(separator)
+        implicit none
+        character(len=1024) :: input_line
+        integer :: ios, n
+        integer, allocatable :: read_int_list_sep(:)
+        integer :: empty_array(0)
+        character(len=*) :: separator
+
+        read(*, "(A)", iostat=ios) input_line
+        if (ios /= 0) then
+            read_int_list_sep = empty_array
+            return
+        end if
+
+        n = count_substrings(input_line, separator) + 1
+        
+        allocate(read_int_list_sep(n))
+
+        read(input_line, *) read_int_list_sep
+
+    end function read_int_list_sep
 end module util
